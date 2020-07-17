@@ -1,9 +1,10 @@
 import { v2 } from "cloudinary";
+import config from "../../config";
 
 v2.config({
-  cloud_name: "pa15la4ta",
-  api_key: "151962189923948",
-  api_secret: "NF4qi4UHD6S6QiXAcaF-h6XVX3Q",
+  cloud_name: config.cloudinary.name,
+  api_key: config.cloudinary.api_key,
+  api_secret: config.cloudinary.api_secret,
 });
 
 export default v2;
