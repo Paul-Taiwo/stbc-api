@@ -12,7 +12,6 @@ import winstonPapertrail from "winston-papertrail";
 import jwt from "express-jwt";
 
 import config from "./config";
-// import logger from "./utils/logger";
 import logger from "fancy-log";
 
 envConfig();
@@ -45,21 +44,6 @@ api.use((err, req, res, next) => {
   }
 });
 
-// api.use(
-//   expressWinston.logger({
-//     transports: [
-//       new winston.transports.Console(),
-//       new winston.transports.Papertrail({
-//         host: config.logger.host,
-//         port: config.logger.port,
-//         level: "error",
-//       }),
-//     ],
-//     format: winston.format.combine(winston.format.colorize(), winston.format.json()),
-//     meta: true,
-//   })
-// );
-
 api.use("/api/v1", [MainRoute, EventRoute, SermonRoute, BlogRoute]);
 
 api.use("**", (req, res) =>
@@ -75,14 +59,6 @@ api.listen(process.env.PORT || config.server.port, (err) => {
   }
 
   require("./utils/db");
-
-  // fs.readdirSync(path.join(__dirname, "routes")).map((file) => {
-  //   if (file === 'index.js') {
-  //     const fi = fs.readFileSync(path.join(__dirname, "routes/") + file).toString("utf8").;
-  //     console.log("FI =========>", fi)
-  //   }
-  //   // api.use('/api/v1', require("./routes/" + file)(api));
-  // });
 
   logger.info(`API is now running on port ${PORT} on ${config.env} mode`);
 });
