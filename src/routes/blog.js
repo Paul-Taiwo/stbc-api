@@ -1,9 +1,10 @@
 import express from "express";
-import { BlogController } from '../controllers'
+import { BlogController } from "../controllers";
 
 const Router = express.Router();
 
-Router.post('/blogs', BlogController.post);
-Router.get('/blogs', BlogController.list);
+Router.get("/blogs", BlogController.list);
+Router.get("/blogs/:postId", BlogController.get);
+Router.post("/blogs", BlogController.post);
 
 export default Router;

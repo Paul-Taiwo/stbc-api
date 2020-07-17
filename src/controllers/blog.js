@@ -13,9 +13,12 @@ exports.list = (req, res) => {
   const perPage = parseInt(query.per_page, 10) || 10;
 
   BlogModel.apiQuery(req.query)
-    .select("blog_title blog_date blog_content")
+    .select("blog_title blog_author blog_content blog_comments featured_img createdAt")
     .then((blogs) => {
-      res.status(200).json(blogs);
+      res.status(200).json({
+        status: 200,
+        data: blogs,
+      });
     })
     .catch((err) => {
       logger.error(err);
@@ -24,9 +27,13 @@ exports.list = (req, res) => {
 };
 
 exports.get = (req, res) => {
-  BlogModel.findById(req.params.blogId)
-    .then((blog) => {
-      res.status(200).json(blog);
+  BlogModel.findById(req.params.postId)
+    .exec()
+    .then((blogPost) => {
+      res.status(200).json({
+        status: 200,
+        data: blogPost,
+      });
     })
     .catch((err) => {
       logger.error(err);
@@ -64,7 +71,6 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
   const data = Object.assign({}, req.body) || {};
-  console.log("Posts =========>", data);
 
   cloudinary.uploader.upload(
     data.featured_img,
