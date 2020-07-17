@@ -11,10 +11,14 @@ exports.list = (req, res) => {
 
   const page = parseInt(query.page, 10) || 0;
   const perPage = parseInt(query.per_page, 10) || 10;
+
   SermonModel.apiQuery(req.query)
-    .select("sermon_title name sermon_date sermon_content")
+    .select("sermon_title sermon_author sermon_content featured_img createdAt updatedAt")
     .then((sermon) => {
-      res.status(200).json(sermon);
+      res.status(200).json({
+        status: 200,
+        data: [...sermon],
+      });
     })
     .catch((err) => {
       logger.error(err);
@@ -23,9 +27,13 @@ exports.list = (req, res) => {
 };
 
 exports.get = (req, res) => {
-  SermonModel.findById(req.params.eventId)
+  SermonModel.findById(req.params.sermonId)
+    .exec()
     .then((sermon) => {
-      res.status(200).json(sermon);
+      res.status(200).json({
+        status: 200,
+        data: sermon,
+      });
     })
     .catch((err) => {
       logger.error(err);
@@ -63,8 +71,6 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
   const data = Object.assign({}, req.body) || {};
-
-  console.log("Here ========>", data);
 
   cloudinary.uploader.upload(
     data.featured_img,
