@@ -1,0 +1,43 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "STBC API",
+	"scripts": {
+		"start": "npm run build && node ./build/server",
+		"watch": "nodemon ./src/server --exec babel-node",
+		"build": "rm -rf build && babel ./src -d ./build --source-maps"
+	},
+	"author": [
+		{
+			"name": "Paul Taiwo",
+			"email": "ayopaulot@gmail.com"
+		}
+	],
+	"license": "BSD-3-Clause",
+	"dependencies": {
+		"@sendgrid/mail": "^7.1.1",
+		"async": "^3.2.0",
+		"babel": "^6.23.0",
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"body-parser": "^1.19.0",
+		"cloudinary": "^1.21.0",
+		"compression": "^1.7.4",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"ejs": "^3.1.2",
+		"express": "^4.17.1",
+		"express-jwt": "^5.3.3",
+		"express-winston": "^4.0.3",
+		"mongoose": "^5.9.14",
+		"mongoose-bcrypt": "^1.7.1",
+		"mongoose-string-query": "^0.2.7",
+		"mongoose-timestamp": "^0.6.0",
+		"validator": "^13.0.0",
+		"winston": "^3.2.1",
+		"winston-papertrail": "^1.0.5"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
+	}
+}
