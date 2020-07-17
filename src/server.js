@@ -67,7 +67,7 @@ api.use("**", (req, res) =>
   })
 );
 
-api.listen(PORT, (err) => {
+api.listen(process.env.PORT || config.server.port, (err) => {
   if (err) {
     logger.error(err);
     process.exit(1);
@@ -83,7 +83,7 @@ api.listen(PORT, (err) => {
   //   // api.use('/api/v1', require("./routes/" + file)(api));
   // });
 
-  logger.info(`API is now running on port ${PORT} in ${config.env} mode`);
+  logger.info(`API is now running on port ${process.env.PORT}`);
 });
 
 module.exports = api;
