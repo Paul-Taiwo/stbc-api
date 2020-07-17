@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import timestamps from "mongoose-timestamp";
 import mongooseStringQuery from "mongoose-string-query";
 
-import logger from "../utils/logger";
+import logger from "fancy-log";
 
 // Change time and date from STRING to DATE
 

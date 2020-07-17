@@ -2,7 +2,7 @@ import async from "async";
 import cloudinary from "../utils/cloudinary";
 import { SermonModel } from "../models";
 
-import logger from "../utils/logger";
+import logger from "fancy-log";
 import { format } from "winston";
 
 exports.list = (req, res) => {

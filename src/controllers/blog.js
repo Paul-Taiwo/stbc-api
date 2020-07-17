@@ -3,7 +3,7 @@ import cloudinary from "../utils/cloudinary";
 
 import { BlogModel } from "../models";
 
-import logger from "../utils/logger";
+import logger from "fancy-log";
 
 exports.list = (req, res) => {
   const params = req.params || {};
