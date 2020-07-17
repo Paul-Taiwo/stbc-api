@@ -17,6 +17,8 @@ import logger from "./utils/logger";
 envConfig();
 const api = express();
 
+logger.info("===============>", config);
+
 api.use(cors());
 api.use(compression());
 api.use(bodyParser.urlencoded({ extended: true }));
@@ -52,10 +54,7 @@ api.use(
       // 	level: 'error'
       // })
     ],
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.json()
-    ),
+    format: winston.format.combine(winston.format.colorize(), winston.format.json()),
     meta: true,
   })
 );
@@ -84,9 +83,7 @@ api.listen(config.server.port, (err) => {
   //   // api.use('/api/v1', require("./routes/" + file)(api));
   // });
 
-  logger.info(
-    `API is now running on port ${config.server.port} in ${config.env} mode`
-  );
+  logger.info(`API is now running on port ${config.server.port} in ${config.env} mode`);
 });
 
 module.exports = api;
