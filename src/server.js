@@ -12,7 +12,8 @@ import winstonPapertrail from "winston-papertrail";
 import jwt from "express-jwt";
 
 import config from "./config";
-import logger from "./utils/logger";
+// import logger from "./utils/logger";
+import logger from "fancy-log";
 
 envConfig();
 const api = express();
@@ -44,20 +45,20 @@ api.use((err, req, res, next) => {
   }
 });
 
-api.use(
-  expressWinston.logger({
-    transports: [
-      new winston.transports.Console(),
-      new winston.transports.Papertrail({
-        host: config.logger.host,
-        port: config.logger.port,
-        level: "error",
-      }),
-    ],
-    format: winston.format.combine(winston.format.colorize(), winston.format.json()),
-    meta: true,
-  })
-);
+// api.use(
+//   expressWinston.logger({
+//     transports: [
+//       new winston.transports.Console(),
+//       new winston.transports.Papertrail({
+//         host: config.logger.host,
+//         port: config.logger.port,
+//         level: "error",
+//       }),
+//     ],
+//     format: winston.format.combine(winston.format.colorize(), winston.format.json()),
+//     meta: true,
+//   })
+// );
 
 api.use("/api/v1", [MainRoute, EventRoute, SermonRoute, BlogRoute]);
 
