@@ -48,11 +48,11 @@ api.use(
   expressWinston.logger({
     transports: [
       new winston.transports.Console(),
-      // new winston.transports.Papertrail({
-      // 	host: config.logger.host,
-      // 	port: config.logger.port,
-      // 	level: 'error'
-      // })
+      new winston.transports.Papertrail({
+        host: config.logger.host,
+        port: config.logger.port,
+        level: "error",
+      }),
     ],
     format: winston.format.combine(winston.format.colorize(), winston.format.json()),
     meta: true,
