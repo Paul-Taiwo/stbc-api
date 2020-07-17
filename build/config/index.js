@@ -14,6 +14,9 @@ exports.default = {
 	jwt: {
 		secret: process.env.SECRET
 	},
+	database: {
+		uri: process.env.URI
+	},
 	server: {
 		port: process.env.PORT
 	},

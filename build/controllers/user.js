@@ -12,10 +12,6 @@ var _user = require('../models/user');
 
 var _user2 = _interopRequireDefault(_user);
 
-var _follow = require('../models/follow');
-
-var _follow2 = _interopRequireDefault(_follow);
-
 var _logger = require('../utils/logger');
 
 var _logger2 = _interopRequireDefault(_logger);

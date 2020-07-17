@@ -20,7 +20,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _mongoose2.default.Promise = global.Promise;
 
-var connection = _mongoose2.default.connect(_config2.default.database.uri);
+var connection = _mongoose2.default.connect(_config2.default.database.uri, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
 
 connection.then(function (db) {
 	_logger2.default.info('Successfully connected to ' + _config2.default.database.uri + ' MongoDB cluster in ' + _config2.default.env + ' mode.');

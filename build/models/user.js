@@ -29,10 +29,6 @@ var _email = require('../utils/email');
 
 var _email2 = _interopRequireDefault(_email);
 
-var _events = require('../utils/events');
-
-var _events2 = _interopRequireDefault(_events);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserSchema = exports.UserSchema = new _mongoose.Schema({

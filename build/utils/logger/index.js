@@ -23,14 +23,14 @@ var logger = void 0;
 if (_config2.default.env == 'test' || _config2.default.env == 'local' || _config2.default.env == 'development') {
 	logger = console;
 } else {
-	var papertrailTransport = new _winston2.default.transports.Papertrail({
-		host: _config2.default.logger.host,
-		port: _config2.default.logger.port
-	});
+	// const papertrailTransport = new winston.transports.Papertrail({
+	// 	host: config.logger.host,
+	// 	port: config.logger.port,
+	// });
 
-	logger = new _winston2.default.Logger({
-		transports: [papertrailTransport]
-	});
+	// logger = new winston.Logger({
+	// 	transports: [papertrailTransport],
+	// });
 }
 
 exports.default = logger;
